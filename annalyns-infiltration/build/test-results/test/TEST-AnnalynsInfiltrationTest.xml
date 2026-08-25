@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AnnalynsInfiltrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-08-25T14:59:19.466Z" hostname="NIKOLALAPTOP" time="0.06">
+  <properties/>
+  <testcase name="The canSignalPrisoner method returns true when prisoner is awake and archer is sleeping" classname="AnnalynsInfiltrationTest" time="0.046"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
