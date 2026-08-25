@@ -1,0 +1,5 @@
+# Project exclude paths
+/lasagna/.gradle/
+/lasagna/build/
+/lasagna/build/classes/java/main/
+/lasagna/build/classes/java/test/
