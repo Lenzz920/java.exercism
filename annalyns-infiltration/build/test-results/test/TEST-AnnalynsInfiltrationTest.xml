@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnnalynsInfiltrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-08-25T14:59:19.466Z" hostname="NIKOLALAPTOP" time="0.06">
+<testsuite name="AnnalynsInfiltrationTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-08-26T05:42:03.356Z" hostname="NIKOLALAPTOP" time="0.077">
   <properties/>
-  <testcase name="The canSignalPrisoner method returns true when prisoner is awake and archer is sleeping" classname="AnnalynsInfiltrationTest" time="0.046"/>
+  <testcase name="The canFreePrisoner method returns true when everyone is sleeping and pet dog is present" classname="AnnalynsInfiltrationTest" time="0.047"/>
+  <testcase name="The canFreePrisoner method returns false when everyone is awake and pet dog is absent" classname="AnnalynsInfiltrationTest" time="0.001"/>
+  <testcase name="The canFreePrisoner method returns false when everyone is awake and pet dog is present" classname="AnnalynsInfiltrationTest" time="0.001"/>
+  <testcase name="The canFreePrisoner method returns false when only archer is sleeping and pet dog is absent" classname="AnnalynsInfiltrationTest" time="0.001"/>
+  <testcase name="The canFreePrisoner method returns true when only archer is sleeping and pet dog is present" classname="AnnalynsInfiltrationTest" time="0.0"/>
+  <testcase name="The canFreePrisoner method returns false when only prisoner is sleeping and pet dog is absent" classname="AnnalynsInfiltrationTest" time="0.0"/>
+  <testcase name="The canFreePrisoner method returns false when only knight is sleeping and pet dog is present" classname="AnnalynsInfiltrationTest" time="0.0"/>
+  <testcase name="The canFreePrisoner method returns false when only knight is awake and pet dog is absent" classname="AnnalynsInfiltrationTest" time="0.001"/>
+  <testcase name="The canFreePrisoner method returns true when only knight is awake and pet dog is present" classname="AnnalynsInfiltrationTest" time="0.0"/>
+  <testcase name="The canFreePrisoner method returns false when only archer is awake and pet dog is absent" classname="AnnalynsInfiltrationTest" time="0.0"/>
+  <testcase name="The canFreePrisoner method returns false when only prisoner is sleeping and pet dog is present" classname="AnnalynsInfiltrationTest" time="0.0"/>
+  <testcase name="The canFreePrisoner method returns false when only archer is awake and pet dog is present" classname="AnnalynsInfiltrationTest" time="0.0"/>
+  <testcase name="The canFreePrisoner method returns false when only knight is sleeping and pet dog is absent" classname="AnnalynsInfiltrationTest" time="0.0"/>
+  <testcase name="The canFreePrisoner method returns false when everyone is sleeping and pet dog is absent" classname="AnnalynsInfiltrationTest" time="0.001"/>
+  <testcase name="The canFreePrisoner method returns true when only prisoner is awake and pet dog is present" classname="AnnalynsInfiltrationTest" time="0.0"/>
+  <testcase name="The canFreePrisoner method returns true when only prisoner is awake and pet dog is absent" classname="AnnalynsInfiltrationTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
