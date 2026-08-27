@@ -1,0 +1,27 @@
+{
+  "authors": [
+    "samuelteixeiras",
+    "ystromm"
+  ],
+  "contributors": [
+    "jagdish-15"
+  ],
+  "files": {
+    "solution": [
+      "src/main/java/BirdWatcher.java"
+    ],
+    "test": [
+      "src/test/java/BirdWatcherTest.java"
+    ],
+    "exemplar": [
+      ".meta/src/reference/java/BirdWatcher.java"
+    ],
+    "invalidator": [
+      "build.gradle"
+    ]
+  },
+  "forked_from": [
+    "csharp/bird-watcher"
+  ],
+  "blurb": "Learn about arrays by keeping track of how many birds visit your garden."
+}
