@@ -29,16 +29,18 @@ public class LanguageList {
     }
 
     public boolean containsLanguage(String language) {
-        for(String element : languages) {
+        for (String element : languages) {
             if (element == language) return true;
-        }  return false;
+        }
+        return false;
     }
 
     public boolean isExciting() {
 
-        for(String element : languages) {
+        for (String element : languages) {
             if (element == "Java" || element == "Kotlin") return true;
-        }  return false;
+        }
+        return false;
 
     }
 }

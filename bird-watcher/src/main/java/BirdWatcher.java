@@ -8,15 +8,15 @@ class BirdWatcher {
     }
 
     public static int[] getLastWeek() {
-        return new int[] {0, 2, 5, 3, 7, 8, 4};
+        return new int[]{0, 2, 5, 3, 7, 8, 4};
     }
 
     public int getToday() {
-        return birdsPerDay[birdsPerDay.length-1];
+        return birdsPerDay[todayIndex()];
     }
 
     public void incrementTodaysCount() {
-       birdsPerDay[birdsPerDay.length-1]++;
+        birdsPerDay[todayIndex()]++;
     }
 
     public boolean hasDayWithoutBirds() {
@@ -30,7 +30,7 @@ class BirdWatcher {
         int numberOfBirds = 0;
 
         for (int dayNumber = 0; dayNumber < numberOfDays; dayNumber++) {
-            if (dayNumber > birdsPerDay.length-1) break;
+            if (dayNumber > todayIndex()) break;
             numberOfBirds += birdsPerDay[dayNumber];
         }
 
@@ -40,10 +40,14 @@ class BirdWatcher {
     public int getBusyDays() {
         int busyDays = 0;
 
-        for (int numberOfBirds : birdsPerDay){
+        for (int numberOfBirds : birdsPerDay) {
             if (numberOfBirds >= BUSY_DAY_THRESHOLD) busyDays++;
         }
 
         return busyDays;
+    }
+
+    private int todayIndex() {
+        return birdsPerDay.length - 1;
     }
 }
