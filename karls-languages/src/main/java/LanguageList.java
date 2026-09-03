@@ -23,24 +23,14 @@ public class LanguageList {
     }
 
     public int count() {
-
         return languages.size();
-
     }
 
     public boolean containsLanguage(String language) {
-        for (String element : languages) {
-            if (element == language) return true;
-        }
-        return false;
+        return languages.contains(language);
     }
 
     public boolean isExciting() {
-
-        for (String element : languages) {
-            if (element == "Java" || element == "Kotlin") return true;
-        }
-        return false;
-
+        return languages.contains("Java") ? true : languages.contains("Kotlin");
     }
 }
