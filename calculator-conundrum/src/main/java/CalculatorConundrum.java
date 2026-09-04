@@ -1,8 +1,11 @@
 class CalculatorConundrum {
     public String calculate(int operand1, int operand2, String operation) {
-        result = operand1 + "operation" + operand2;
-        System.out.println(operand1 + "" + operation + "" + operand2 + " = " + result);
+        return switch (operation) {
+            case "+" -> operand1 + " + " + operand2 + " = " + (operand1 + operand2);
+            case "-" -> operand1 + " - " + operand2 + " = " + (operand1 - operand2);
+            case "*" -> operand1 + " * " + operand2 + " = " + (operand1 * operand2);
+            case "/" -> operand1 + " / " + operand2 + " = " + (operand1 / operand2);
+            default -> throw new IllegalOperationException();
+        };
     }
-
-
 }
