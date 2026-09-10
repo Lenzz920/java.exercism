@@ -1,5 +1,6 @@
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class DialingCodes {
 
@@ -18,16 +19,24 @@ public class DialingCodes {
     }
 
     public void addNewDialingCode(Integer code, String country) {
-        if (!codes.containsKey(code) || !codes.containsValue(country)) codes.put(code, country);
+        if (!codes.containsKey(code) && !codes.containsValue(country)) codes.put(code, country);
     }
 
     public Integer findDialingCode(String country) {
-        throw new UnsupportedOperationException(
-                "Delete this statement and write your own implementation.");
+        for (Map.Entry <Integer, String> entry : codes.entrySet()) {
+            if((entry.getValue().equals(country))) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
     public void updateCountryDialingCode(Integer code, String country) {
-        throw new UnsupportedOperationException(
-                "Delete this statement and write your own implementation.");
+        if(codes.containsValue(country)) {
+            if(!codes.containsKey(code)){
+                codes.remove(findDialingCode(country));
+                codes.put(code, country);
+            }
+        }
     }
 }
