@@ -1,9 +1,9 @@
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 class HighScores {
 
-    List<Integer> highScores;
+    private final List<Integer> highScores;
 
     public HighScores(List<Integer> highScores) {
         this.highScores = highScores;
@@ -18,13 +18,10 @@ class HighScores {
     }
 
     Integer personalBest() {
-         highScores.sort(Collections.reverseOrder());
-         return highScores.getFirst();
+        return highScores.stream().max(Comparator.naturalOrder()).orElseThrow();
     }
 
-//    List<Integer> personalTopThree() {
-
-//    }
-
-
+    List<Integer> personalTopThree() {
+        return highScores.stream().sorted(Comparator.reverseOrder()).limit(3).toList();
+    }
 }

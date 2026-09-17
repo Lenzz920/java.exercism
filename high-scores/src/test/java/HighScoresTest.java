@@ -1,8 +1,7 @@
-import java.util.Arrays;
-
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,7 +29,6 @@ public class HighScoresTest {
     }
 
     @Test
-    @Disabled("Remove to run test")
     @DisplayName("Personal top three from a list of scores")
     public void shouldReturnPersonalTopThreeFromListOfScores() {
         HighScores highScores = new HighScores(Arrays.asList(10, 30, 90, 30, 100, 20, 10, 0, 30, 40, 40, 70, 70));
@@ -38,7 +36,6 @@ public class HighScoresTest {
     }
 
     @Test
-    @Disabled("Remove to run test")
     @DisplayName("Personal top highest to lowest")
     public void shouldReturnPersonalTopThreeSortedHighestToLowest() {
         HighScores highScores = new HighScores(Arrays.asList(20, 10, 30));
@@ -46,7 +43,6 @@ public class HighScoresTest {
     }
 
     @Test
-    @Disabled("Remove to run test")
     @DisplayName("Personal top when there is a tie")
     public void shouldReturnPersonalTopThreeWhenThereIsATie() {
         HighScores highScores = new HighScores(Arrays.asList(40, 20, 40, 30));
@@ -54,7 +50,6 @@ public class HighScoresTest {
     }
 
     @Test
-    @Disabled("Remove to run test")
     @DisplayName("Personal top when there are less than 3")
     public void shouldReturnPersonalTopWhenThereIsLessThanThreeScores() {
         HighScores highScores = new HighScores(Arrays.asList(30, 70));
@@ -62,7 +57,6 @@ public class HighScoresTest {
     }
 
     @Test
-    @Disabled("Remove to run test")
     @DisplayName("Personal top when there is only one")
     public void shouldReturnPersonalTopWhenThereIsOnlyOneScore() {
         HighScores highScores = new HighScores(Arrays.asList(40));
@@ -70,7 +64,6 @@ public class HighScoresTest {
     }
 
     @Test
-    @Disabled("Remove to run test")
     @DisplayName("Latest score after personal top scores")
     public void callingLatestAfterPersonalTopThree() {
         HighScores highScores = new HighScores(Arrays.asList(70, 50, 20, 30));
@@ -79,7 +72,6 @@ public class HighScoresTest {
     }
 
     @Test
-    @Disabled("Remove to run test")
     @DisplayName("Scores after personal top scores")
     public void callingScoresAfterPersonalTopThree() {
         HighScores highScores = new HighScores(Arrays.asList(30, 50, 20, 70));
@@ -88,7 +80,6 @@ public class HighScoresTest {
     }
 
     @Test
-    @Disabled("Remove to run test")
     @DisplayName("Latest score after personal best")
     public void callingLatestAfterPersonalBest() {
         HighScores highScores = new HighScores(Arrays.asList(20, 70, 15, 25, 30));
@@ -97,7 +88,6 @@ public class HighScoresTest {
     }
 
     @Test
-    @Disabled("Remove to run test")
     @DisplayName("Scores after personal best")
     public void callingScoresAfterPersonalBest() {
         HighScores highScores = new HighScores(Arrays.asList(20, 70, 15, 25, 30));
