@@ -6,7 +6,7 @@ class HighScores {
     private final List<Integer> highScores;
 
     public HighScores(List<Integer> highScores) {
-        this.highScores = highScores;
+        this.highScores = List.copyOf(highScores);
     }
 
     List<Integer> scores() {
@@ -14,14 +14,19 @@ class HighScores {
     }
 
     Integer latest() {
-        return highScores.getLast();
+        return highScores.get(highScores.size()-1);
     }
 
-    Integer personalBest() {
-        return highScores.stream().max(Comparator.naturalOrder()).orElseThrow();
+    Integer personalBest(){
+        return highScores.stream()
+                .max(Comparator.naturalOrder())
+                .orElseThrow();
     }
 
     List<Integer> personalTopThree() {
-        return highScores.stream().sorted(Comparator.reverseOrder()).limit(3).toList();
+        return highScores.stream()
+                .sorted(Comparator.reverseOrder())
+                .limit(3)
+                .toList();
     }
 }
