@@ -1,31 +1,32 @@
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 class SumOfMultiples {
 
-    public final int number;
-    public final int[] set;
+    private final int limit;
+    private final int[] factors;
 
-    SumOfMultiples(int number, int[] set) {
-        this.number = number;
-        this.set = set;
+    SumOfMultiples(int limit, int[] factors) {
+        this.limit = limit;
+        this.factors = factors;
     }
 
     int getSum() {
-        Set<Integer> masterSet = new TreeSet<>();
+        Set<Integer> masterSet = new HashSet<>();
         int sumTotal = 0;
-        for(int item : set) {
+        for (int item : factors) {
             int multiply = 1;
-            while((item * multiply) < number) {
+            if (item == 0) {
+                continue;
+            }
+            while ((item * multiply) < limit) {
                 masterSet.add(item * multiply);
                 multiply++;
             }
         }
-        for(int number : masterSet) {
+        for (int number : masterSet) {
             sumTotal += number;
         }
         return sumTotal;
     }
-
 }
