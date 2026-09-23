@@ -5,19 +5,29 @@ import java.util.Map;
 class WordCount {
     public static void main(String[] args) {
         String s = "This is a first test test";
+        phrase(s);
     }
 
-    public Map<String, Integer> phrase(String input) {
-        Map<String, Integer> wordMap = new HashMap<>();
-        String currentWord = "";
+    public static Map<String, Integer> phrase(String input) {
+        Map<String, Integer> counts = new HashMap<>();
+        StringBuilder word = new StringBuilder();
 
-        while (input)
-        if(!wordMap.containsKey(currentWord)) {
-            wordMap.put(currentWord.toLowerCase(Locale.ROOT), 1);
-        } else {
-            wordMap.put(currentWord.toLowerCase(), wordMap.getValue() + 1);
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+
+            if ( Character.isLetterOrDigit(c) ) {
+                word.append(c);
+            } else if (Character.isLetter(c)) {
+                // part of a contraction — add it to `word`
+
+            } else {
+                // anything else ends the current word
+                // TODO 3: if `word` has something in it, record it, then empty it
+            }
         }
 
-        return wordMap;
+        // TODO 4: the loop is over. Is anything still sitting in `word`?
+
+        return counts;
     }
 }
