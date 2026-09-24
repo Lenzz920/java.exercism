@@ -13,20 +13,15 @@ class SumOfMultiples {
 
     int getSum() {
         Set<Integer> masterSet = new HashSet<>();
-        int sumTotal = 0;
-        for (int item : factors) {
-            int multiply = 1;
-            if (item == 0) {
-                continue;
-            }
-            while ((item * multiply) < limit) {
-                masterSet.add(item * multiply);
-                multiply++;
+
+        for(int factor : factors) {
+            for(int multiple = factor; multiple<limit; multiple += factor) {
+                masterSet.add(multiple);
             }
         }
-        for (int number : masterSet) {
-            sumTotal += number;
-        }
-        return sumTotal;
+
+        return masterSet.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 }

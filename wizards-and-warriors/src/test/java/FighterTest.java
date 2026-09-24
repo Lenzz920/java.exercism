@@ -200,7 +200,6 @@ class FighterTest {
         assertThat(wizard.getDamagePoints(new Fighter())).isEqualTo(3);
     }
 
-    @Disabled
     @Test
     @Tag("task:8")
     @DisplayName("A Wizard deals 12 damage after a spell has been prepared")

@@ -1,9 +1,9 @@
-public class Wizzard extends Fighter{
+public class Wizard extends Fighter{
 
-    public boolean preparedSpell;
+    boolean preparedSpell;
 
     @Override
-    public boolean isVulnerable() {
+    boolean isVulnerable() {
         if(preparedSpell) {
             return false;
         }
@@ -15,12 +15,12 @@ public class Wizzard extends Fighter{
         return "Fighter is a Wizard";
     }
 
-    public void prepareSpell() {
+    void prepareSpell() {
         preparedSpell = true;
     }
 
     @Override
-    public int getDamagePoints(Fighter fighter) {
+    int getDamagePoints(Fighter fighter) {
         if(preparedSpell) {
             return 12;
         } else {

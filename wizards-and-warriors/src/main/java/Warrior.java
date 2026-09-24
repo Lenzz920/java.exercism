@@ -1,7 +1,7 @@
 public class Warrior extends Fighter {
 
     @Override
-    public boolean isVulnerable() {
+    boolean isVulnerable() {
         return false;
     }
 
@@ -11,7 +11,7 @@ public class Warrior extends Fighter {
     }
 
     @Override
-    public int getDamagePoints(Fighter fighter) {
+    int getDamagePoints(Fighter fighter) {
         if(fighter.isVulnerable()) {
             return 10;
         } else {
