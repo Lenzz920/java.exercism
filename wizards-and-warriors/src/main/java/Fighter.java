@@ -8,7 +8,3 @@ class Fighter {
         return 1;
     }
 }
-
-// TODO: define the Warrior class
-
-// TODO: define the Wizard class
