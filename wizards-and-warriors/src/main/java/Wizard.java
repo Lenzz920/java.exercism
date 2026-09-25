@@ -1,13 +1,10 @@
-public class Wizard extends Fighter{
+public class Wizard extends Fighter {
 
-    boolean preparedSpell;
+    private boolean preparedSpell;
 
     @Override
     boolean isVulnerable() {
-        if(preparedSpell) {
-            return false;
-        }
-        return super.isVulnerable();
+        return !preparedSpell;
     }
 
     @Override
@@ -21,10 +18,6 @@ public class Wizard extends Fighter{
 
     @Override
     int getDamagePoints(Fighter fighter) {
-        if(preparedSpell) {
-            return 12;
-        } else {
-            return 3;
-        }
+        return preparedSpell ? 12 : 3;
     }
 }

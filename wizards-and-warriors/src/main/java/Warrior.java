@@ -12,10 +12,6 @@ public class Warrior extends Fighter {
 
     @Override
     int getDamagePoints(Fighter fighter) {
-        if(fighter.isVulnerable()) {
-            return 10;
-        } else {
-            return 6;
-        }
+        return fighter.isVulnerable() ? 10 : 6;
     }
 }
