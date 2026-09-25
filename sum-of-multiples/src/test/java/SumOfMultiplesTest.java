@@ -137,7 +137,6 @@ public class SumOfMultiplesTest {
 
     }
 
-    @Disabled
     @Test
     @DisplayName("the only multiple of 0 is 0")
     public void testSumOfMultiplesOfZeroIsZero() {
@@ -148,7 +147,6 @@ public class SumOfMultiplesTest {
 
     }
 
-    @Disabled
     @Test
     @DisplayName("the factor 0 does not affect the sum of multiples of other factors")
     public void testFactorZeroDoesNotAffectTheSumOfMultiplesOfOtherFactors() {

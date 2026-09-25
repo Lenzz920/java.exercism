@@ -15,6 +15,9 @@ class SumOfMultiples {
         Set<Integer> masterSet = new HashSet<>();
 
         for(int factor : factors) {
+            if (factor == 0) {
+                continue;
+            }
             for(int multiple = factor; multiple<limit; multiple += factor) {
                 masterSet.add(multiple);
             }
