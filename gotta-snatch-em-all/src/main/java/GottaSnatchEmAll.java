@@ -14,18 +14,22 @@ class GottaSnatchEmAll {
     }
 
     static boolean canTrade(Set<String> myCollection, Set<String> theirCollection) {
-        return myCollection.equals(theirCollection);
+        return (!myCollection.containsAll(theirCollection) && !theirCollection.containsAll(myCollection));
     }
 
     static Set<String> commonCards(List<Set<String>> collections) {
-        Set<String> commonCardsSet = new HashSet<>();
-        int setNumber = 0;
-        for(String card : collections.get(setNumber)) {
-            while()
+        Set<String> commonCardsSet = new HashSet<>(collections.getFirst());
+        for(Set<String> collection : collections) {
+            commonCardsSet.retainAll(collection);
         }
+        return commonCardsSet;
     }
 
     static Set<String> allCards(List<Set<String>> collections) {
-        throw new UnsupportedOperationException("Please implement the (static) GottaSnatchEmAll.allCards() method");
+        Set<String> allCardsSet = new HashSet<>(collections.getFirst());
+        for(Set<String> collection : collections) {
+            allCardsSet.addAll(collection);
+        }
+        return allCardsSet;
     }
 }
