@@ -32,4 +32,9 @@ class GottaSnatchEmAll {
         }
         return allCardsSet;
     }
+
+//    mentor feedback
+//    return collections.stream()
+//            .flatMap(Set::stream)
+//        .collect(Collectors.toSet());
 }
