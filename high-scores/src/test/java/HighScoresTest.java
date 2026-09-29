@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -93,5 +95,15 @@ public class HighScoresTest {
         HighScores highScores = new HighScores(Arrays.asList(20, 70, 15, 25, 30));
         highScores.personalBest();
         assertThat(highScores.scores()).isEqualTo(Arrays.asList(20, 70, 15, 25, 30));
+    }
+
+    @Test
+    @DisplayName("Changing the list from outside")
+    public void changeList() {
+        List<Integer> ints = new ArrayList<Integer>();
+        ints.add(5);
+        HighScores highScores = new HighScores(ints);
+        ints.add(6);
+        assertThat(highScores.scores()).isEqualTo(Arrays.asList(5));
     }
 }
