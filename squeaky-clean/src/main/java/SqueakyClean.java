@@ -16,12 +16,10 @@ class SqueakyClean {
         boolean lastCharWasADash = false;
 
         for (char c : identifierChars) {
-            int ascii = Character.getNumericValue(c);
             if (leetSpeakCheck(c)) {
                 builder.append(leetSpeakConverter(c));
                 continue;
-            }
-            if (c == '-') {
+            } else if (c == '-') {
                 lastCharWasADash = true;
                 continue;
             } else if (lastCharWasADash) {
@@ -29,11 +27,12 @@ class SqueakyClean {
                 builder.append(Character.toUpperCase(c));
                 continue;
             } else if (Character.isWhitespace(c)) {
-                c = '_';
-            } else if ((ascii > 31 && ascii < 48) ||
-                        (ascii > 57 && ascii < 65) ||
-                        (ascii > 90 && ascii < 97) ||
-                        (ascii > 122 && ascii < 256)){
+                builder.append('_');
+                continue;
+            } else if (((int) c > 32 && (int) c < 48) ||
+                        ((int) c > 57 && (int) c < 65) ||
+                        ((int) c > 90 && (int) c < 97) ||
+                        ((int) c > 122 && (int) c < 256)){
                 continue;
             }
             builder.append(c);
