@@ -30,7 +30,6 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("count one of each word")
     public void countOneOfEachWord() {
@@ -42,7 +41,6 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("multiple occurrences of a word")
     public void multipleOccurrencesOfAWord() {
@@ -56,7 +54,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("handles cramped lists")
     public void handlesCrampedLists() {
@@ -68,7 +66,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("handles expanded lists")
     public void handlesExpandedLists() {
@@ -80,7 +78,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("ignore punctuation")
     public void ignorePunctuation() {
@@ -95,7 +93,7 @@ public class WordCountTest {
 
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("include numbers")
     public void includeNumbers() {
@@ -107,7 +105,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("normalize case")
     public void normalizeCase() {
@@ -118,7 +116,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("with apostrophes")
     public void withApostrophes() {
@@ -135,7 +133,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("with quotations")
     public void withQuotations() {
@@ -150,7 +148,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("substrings from the beginning")
     public void substringsFromTheBeginning() {
@@ -167,7 +165,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("multiple spaces not detected as a word")
     public void multipleSpacesNotDetectedAsAWord() {
@@ -178,7 +176,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("alternating word separators not detected as a word")
     public void alternatingWordSeperatorsNotDetectedAsAWord() {
@@ -190,7 +188,7 @@ public class WordCountTest {
         assertThat(actualWordCount).isEqualTo(expectedWordCount);
     }
 
-    @Disabled("Remove to run test")
+    
     @Test
     @DisplayName("quotation for word with apostrophe")
     public void quotationForWordWithApostrophe() {
