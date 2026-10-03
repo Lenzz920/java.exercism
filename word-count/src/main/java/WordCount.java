@@ -46,10 +46,8 @@ class WordCount {
                 if (isWhiteSpace) {
                     isWhiteSpace = false;
                     continue;
-                } else {
-                    builder.append(c);
-                    continue;
                 }
+                    builder.append(c);
             }
         }
         return builder.toString();

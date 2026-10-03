@@ -3,7 +3,7 @@ import java.util.Map;
 
 class SqueakyClean {
 
-    static Map<Character, Character> leetspeakMap = Map.of(
+    private static final Map<Character, Character> leetspeakMap = Map.of(
             '4', 'a',
             '3', 'e',
             '0', 'o',
@@ -12,39 +12,44 @@ class SqueakyClean {
 
     static String clean(String identifier) {
         StringBuilder builder = new StringBuilder();
-        char[] identifierChars = identifier.toCharArray();
         boolean lastCharWasADash = false;
 
-        for (char c : identifierChars) {
-            if (leetSpeakCheck(c)) {
-                builder.append(leetSpeakConverter(c));
-                continue;
-            } else if (c == '-') {
+        for (char character : identifier.toCharArray())
+        {
+            var cleaned = cleanCharacter(character, lastCharWasADash);
+            Character replacement = leetspeakMap.get(character);
+            if (replacement != null) {
+                builder.append(replacement);
+            } else if (character == '-') {
                 lastCharWasADash = true;
-                continue;
+            } else if (Character.isWhitespace(character)) {
+                builder.append('_');
             } else if (lastCharWasADash) {
                 lastCharWasADash = false;
-                builder.append(Character.toUpperCase(c));
-                continue;
-            } else if (Character.isWhitespace(c)) {
-                builder.append('_');
-                continue;
-            } else if (((int) c > 32 && (int) c < 48) ||
-                        ((int) c > 57 && (int) c < 65) ||
-                        ((int) c > 90 && (int) c < 97) ||
-                        ((int) c > 122 && (int) c < 256)){
-                continue;
+                builder.append(Character.toUpperCase(character));
+            }  else if (Character.isLetterOrDigit(character)){
+                builder.append(character);
             }
-            builder.append(c);
         }
         return builder.toString();
     }
 
-    public static boolean leetSpeakCheck(char c) {
-        return leetspeakMap.containsKey(c);
+    private static Character cleanCharacter(
+            char character,
+            boolean lastCharWasADash
+    ) {
+        Character replacement = leetspeakMap.get(character);
+        if (replacement != null) {
+            return replacement;
+        } else if (character == '-') {
+            lastCharWasADash = true;
+        } else if (Character.isWhitespace(character)) {
+            return '_';
+        } else if (lastCharWasADash) {
+            lastCharWasADash = false;
+            return Character.toUpperCase(character);
+        }
+        return '1';
     }
 
-    public static char leetSpeakConverter(char c) {
-        return leetspeakMap.get(c);
-    }
 }
