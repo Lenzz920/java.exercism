@@ -1,39 +1,39 @@
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 class WordCount {
 
     public Map<String, Integer> phrase(String input) {
-        Map<String, Integer> wordCount = new HashMap<>();
-        String[] words = removeSymbols(input).split(" ");
+        Map<String, Integer> wordCounts = new HashMap<>();
+        String[] words = removeSymbols(input).split("\\s+");
 
         for (String word : words) {
-            String toLower = word.toLowerCase();
-            while (toLower.startsWith("'")) {
-               toLower = toLower.substring(1);
+            String normalizedWord = word.toLowerCase(Locale.ROOT);
+            while (normalizedWord.startsWith("'")) {
+                normalizedWord = normalizedWord.substring(1);
             }
-            while (toLower.endsWith("'")) {
-                toLower = toLower.substring(0, toLower.length() - 1);
+            while (normalizedWord.endsWith("'")) {
+                normalizedWord = normalizedWord.substring(0, normalizedWord.length() - 1);
             }
-            if(toLower.isEmpty()) {
+            if (normalizedWord.isEmpty()) {
                 continue;
             }
-        if (!wordCount.containsKey(toLower)) {
-            wordCount.put(toLower, 1);
-        } else {
-            wordCount.replace(toLower, wordCount.get(toLower) + 1);
-        }
+            wordCounts.merge(
+                    normalizedWord,
+                    1,
+                    Integer::sum
+            );
     }
-        return wordCount;
+        return wordCounts;
     }
 
-    public String removeSymbols(String input) {
-        char[] charArray = input.toCharArray();
+    private static String removeSymbols (String input) {
         StringBuilder builder = new StringBuilder();
 
-        for (char c : charArray) {
-            if (Character.isLetterOrDigit(c) || c == '\'') {
-                builder.append(c);
+        for (char character : input.toCharArray()) {
+            if (Character.isLetterOrDigit(character ) || character  == '\'') {
+                builder.append(character);
             } else {
                 builder.append(" ");
             }
