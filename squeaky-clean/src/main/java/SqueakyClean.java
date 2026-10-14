@@ -3,7 +3,7 @@ import java.util.Map;
 
 class SqueakyClean {
 
-    private static final Map<Character, Character> leetspeakMap = Map.of(
+    private static final Map<Character, Character> LEETSPEAK = Map.of(
             '4', 'a',
             '3', 'e',
             '0', 'o',
@@ -17,19 +17,13 @@ class SqueakyClean {
         for (char character : identifier.toCharArray())
         {
             var cleaned = cleanCharacter(character, lastCharWasADash);
-            Character replacement = leetspeakMap.get(character);
-            if (replacement != null) {
-                builder.append(replacement);
-            } else if (character == '-') {
-                lastCharWasADash = true;
-            } else if (Character.isWhitespace(character)) {
-                builder.append('_');
-            } else if (lastCharWasADash) {
-                lastCharWasADash = false;
-                builder.append(Character.toUpperCase(character));
-            }  else if (Character.isLetterOrDigit(character)){
-                builder.append(character);
+
+            if (cleaned != null) {
+                builder.append(cleaned);
             }
+
+            lastCharWasADash = character == '-';
+
         }
         return builder.toString();
     }
@@ -38,18 +32,20 @@ class SqueakyClean {
             char character,
             boolean lastCharWasADash
     ) {
-        Character replacement = leetspeakMap.get(character);
+        if (Character.isWhitespace(character)) {
+            return '_';
+        }
+
+        var replacement = LEETSPEAK.get(character);
         if (replacement != null) {
             return replacement;
-        } else if (character == '-') {
-            lastCharWasADash = true;
-        } else if (Character.isWhitespace(character)) {
-            return '_';
-        } else if (lastCharWasADash) {
-            lastCharWasADash = false;
-            return Character.toUpperCase(character);
         }
-        return '1';
+
+        else if (!Character.isLetterOrDigit(character)) {
+            return null;
+        }
+
+        return lastCharWasADash ? Character.toUpperCase(character) : character;
     }
 
 }
