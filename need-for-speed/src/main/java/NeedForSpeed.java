@@ -22,7 +22,12 @@ class NeedForSpeed {
             this.distance += speed;
             currentBattery -= batteryDrain;
         }
+    }
 
+    //the formula inside () determines how many times the car can drive, and the int rounding is deliberate,
+    //because a leftover battery can't be used if it's below the batteryDrain
+    public int distanceItCanGo() {
+        return (currentBattery / batteryDrain) * speed;
     }
 
     public static NeedForSpeed nitro() {
@@ -38,10 +43,6 @@ class RaceTrack {
     }
 
     public boolean canFinishRace(NeedForSpeed car) {
-        while (!car.batteryDrained()) {
-            car.drive();
-        }
-
-        return car.distanceDriven() >= distance;
+       return car.distanceItCanGo() >= distance;
     }
 }
