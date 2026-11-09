@@ -14,7 +14,10 @@ class WordCount {
         normalizedWord = normalizedWord.substring(1);
       }
       while (normalizedWord.endsWith("'")) {
-        normalizedWord = normalizedWord.substring(0, normalizedWord.length() - 1);
+        normalizedWord = normalizedWord.substring(
+                0,
+                normalizedWord.length() - 1
+        );
       }
       if (normalizedWord.isEmpty()) {
         continue;
