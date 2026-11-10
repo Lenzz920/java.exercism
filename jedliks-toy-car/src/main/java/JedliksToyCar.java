@@ -1,7 +1,9 @@
 public class JedliksToyCar {
 
   private int distanceInMeters;
-  private int battery = 100;
+  private int batteryPercentage = 100;
+  private static final int METERS_PER_DRIVE = 20;
+  private static final int BATTERY_DRAIN_PER_DRIVE = 1;
 
   public static JedliksToyCar buy() {
     return new JedliksToyCar();
@@ -12,13 +14,17 @@ public class JedliksToyCar {
   }
 
   public String batteryDisplay() {
-    return battery > 0 ? String.format("Battery at %d%%", battery) : "Battery empty";
+    return batteryIsEmpty() ? "Battery at " + batteryPercentage + "%" : "Battery empty";
   }
 
   public void drive() {
-    if (battery != 0) {
-      distanceInMeters += 20;
-      battery--;
+    if (batteryIsEmpty()) {
+      distanceInMeters += METERS_PER_DRIVE;
+      batteryPercentage -= BATTERY_DRAIN_PER_DRIVE;
     }
+  }
+
+  public boolean batteryIsEmpty() {
+    return batteryPercentage > 0;
   }
 }
