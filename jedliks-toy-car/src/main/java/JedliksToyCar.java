@@ -14,17 +14,17 @@ public class JedliksToyCar {
   }
 
   public String batteryDisplay() {
-    return batteryIsEmpty() ? "Battery at " + batteryPercentage + "%" : "Battery empty";
+    return batteryIsNotEmpty() ? "Battery at " + batteryPercentage + "%" : "Battery empty";
   }
 
   public void drive() {
-    if (batteryIsEmpty()) {
+    if (batteryIsNotEmpty()) {
       distanceInMeters += METERS_PER_DRIVE;
       batteryPercentage -= BATTERY_DRAIN_PER_DRIVE;
     }
   }
 
-  public boolean batteryIsEmpty() {
-    return batteryPercentage > 0;
+  public boolean batteryIsNotEmpty() {
+    return batteryPercentage >= BATTERY_DRAIN_PER_DRIVE;
   }
 }
