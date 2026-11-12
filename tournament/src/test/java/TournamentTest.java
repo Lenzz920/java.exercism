@@ -21,7 +21,6 @@ public class TournamentTest {
                 .isEqualTo("Team                           | MP |  W |  D |  L |  P\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("a win is three points, a loss is zero points")
     public void aWinIsThreePointsALossIsZeroPoints() {
@@ -33,7 +32,6 @@ public class TournamentTest {
                                 "Blithering Badgers             |  1 |  0 |  0 |  1 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("a win can also be expressed as a loss")
     public void aWinCanAlsoBeExpressedAsALoss() {
@@ -45,7 +43,6 @@ public class TournamentTest {
                                 "Blithering Badgers             |  1 |  0 |  0 |  1 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("a different team can win")
     public void aDifferentTeamCanWin() {
@@ -57,7 +54,6 @@ public class TournamentTest {
                                 "Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("a draw is one point each")
     public void aDrawIsOnePointEach() {
@@ -69,7 +65,6 @@ public class TournamentTest {
                                 "Blithering Badgers             |  1 |  0 |  1 |  0 |  1\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("There can be more than one match")
     public void thereCanBeMoreThanOneMatch() {
@@ -83,7 +78,6 @@ public class TournamentTest {
                                 "Blithering Badgers             |  2 |  0 |  0 |  2 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("There can be more than one winner")
     public void thereCanBeMoreThanOneWinner() {
@@ -97,7 +91,6 @@ public class TournamentTest {
                                 "Blithering Badgers             |  2 |  1 |  0 |  1 |  3\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("There can be more than two teams")
     public void thereCanBeMoreThanTwoTeams() {
@@ -113,7 +106,6 @@ public class TournamentTest {
                                 "Courageous Californians        |  2 |  0 |  0 |  2 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("typical input")
     public void typicalInput() {
@@ -133,7 +125,6 @@ public class TournamentTest {
                                 "Courageous Californians        |  3 |  0 |  1 |  2 |  1\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("incomplete competition (not all pairs have played)")
     public void incompleteCompetition() {
@@ -151,7 +142,6 @@ public class TournamentTest {
                                 "Devastating Donkeys            |  1 |  0 |  0 |  1 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("ties broken alphabetically")
     public void tiesBrokenAlphabetically() {
@@ -171,7 +161,6 @@ public class TournamentTest {
                                 "Devastating Donkeys            |  3 |  0 |  1 |  2 |  1\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     @DisplayName("ensure points sorted numerically")
     public void pointsSortedNumerically() {

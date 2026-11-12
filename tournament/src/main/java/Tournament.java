@@ -1,28 +1,39 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 class Tournament {
   Map<String, Team> teams = new HashMap<>();
 
   String printTable() {
-    throw new UnsupportedOperationException("Please implement the Tournament.printTable() method.");
+    List<Team> teamList = new ArrayList<>(teams.values());
+    Collections.sort(teamList);
+
+    String header = "Team                           | MP |  W |  D |  L |  P\n";
+
+    StringBuilder table = new StringBuilder(header);
+    for (Team team : teamList) {
+      table.append(team);
+    }
+
+    return table.toString();
   }
 
   void applyResults(String resultString) {
     String[] rows = resultString.split("\n");
 
     for (String row : rows) {
-      if(row.isEmpty()) {
+      if (row.isEmpty()) {
         continue;
       }
       String[] parts = row.split(";");
-      if (!teams.containsKey(parts[0])) {
-        teams.put(parts[0], new Team(parts[0]));
-      }
-      if (!teams.containsKey(parts[1])) {
-        teams.put(parts[1], new Team(parts[1]));
-      }
+      addTeamToMap(parts[0]);
+      addTeamToMap(parts[1]);
       fillStats(parts[2], teams.get(parts[0]), teams.get(parts[1]));
+    }
+  }
+
+  private void addTeamToMap(String team) {
+    if (!teams.containsKey(team)) {
+      teams.put(team, new Team(team));
     }
   }
 
@@ -59,22 +70,17 @@ class Team implements Comparable<Team> {
     this.teamName = teamName;
   }
 
-  public int compareTo(Team t1) {
-    return Integer.compare(t1.points, this.points);
+  public int compareTo(Team other) {
+    int byPoints = Integer.compare(other.points, this.points);
+    if (byPoints != 0) {
+      return byPoints;
+    }
+    return this.teamName.compareTo(other.teamName);
   }
 
   @Override
   public String toString() {
-    return teamName
-        + " | "
-        + matchesPlayed
-        + " | "
-        + wins
-        + " | "
-        + draws
-        + " | "
-        + losses
-        + " | "
-        + points;
+    return "%-30s | %2d | %2d | %2d | %2d | %2d\n"
+        .formatted(teamName, matchesPlayed, wins, draws, losses, points);
   }
 }
