@@ -1,7 +1,9 @@
 import java.util.*;
 
 class Tournament {
-  Map<String, Team> teams = new HashMap<>();
+  private final Map<String, Team> teams = new HashMap<>();
+  private final int WIN_POINTS = 3;
+  private final int DRAW_POINTS = 1;
 
   String printTable() {
     List<Team> teamList = new ArrayList<>(teams.values());
@@ -32,9 +34,20 @@ class Tournament {
   }
 
   private void addTeamToMap(String team) {
-    if (!teams.containsKey(team)) {
-      teams.put(team, new Team(team));
-    }
+    teams.computeIfAbsent(team, Team::new);
+  }
+
+  private void registerWin(Team firstTeam, Team secondTeam) {
+    firstTeam.points += WIN_POINTS;
+    firstTeam.wins++;
+    secondTeam.losses++;
+  }
+
+  private void registerDraw(Team firstTeam, Team secondTeam) {
+    firstTeam.points += DRAW_POINTS;
+    secondTeam.points += DRAW_POINTS;
+    firstTeam.draws++;
+    secondTeam.draws++;
   }
 
   private void fillStats(String outcome, Team firstTeam, Team secondTeam) {
@@ -42,18 +55,11 @@ class Tournament {
     secondTeam.matchesPlayed++;
 
     if (outcome.equals("win")) {
-      firstTeam.points += 3;
-      firstTeam.wins++;
-      secondTeam.losses++;
+      registerWin(firstTeam, secondTeam);
     } else if (outcome.equals("draw")) {
-      firstTeam.points += 1;
-      secondTeam.points += 1;
-      firstTeam.draws++;
-      secondTeam.draws++;
+      registerDraw(firstTeam, secondTeam);
     } else {
-      secondTeam.points += 3;
-      firstTeam.losses++;
-      secondTeam.wins++;
+      registerWin(secondTeam, firstTeam);
     }
   }
 }
@@ -70,12 +76,12 @@ class Team implements Comparable<Team> {
     this.teamName = teamName;
   }
 
-  public int compareTo(Team other) {
-    int byPoints = Integer.compare(other.points, this.points);
+  public int compareTo(Team otherTeam) {
+    int byPoints = Integer.compare(otherTeam.points, this.points);
     if (byPoints != 0) {
       return byPoints;
     }
-    return this.teamName.compareTo(other.teamName);
+    return this.teamName.compareTo(otherTeam.teamName);
   }
 
   @Override
