@@ -2,14 +2,15 @@ import java.util.*;
 
 class Tournament {
   private final Map<String, Team> teams = new HashMap<>();
-  private final int WIN_POINTS = 3;
-  private final int DRAW_POINTS = 1;
+  private static final int WIN_POINTS = 3;
+  private static final int DRAW_POINTS = 1;
+  static final String ROW_FORMAT = "%-30s | %2s | %2s | %2s | %2s | %2s\n";
 
   String printTable() {
     List<Team> teamList = new ArrayList<>(teams.values());
     Collections.sort(teamList);
 
-    String header = "Team                           | MP |  W |  D |  L |  P\n";
+    String header = ROW_FORMAT.formatted("Team", "MP", "W", "D", "L","P");
 
     StringBuilder table = new StringBuilder(header);
     for (Team team : teamList) {
@@ -54,12 +55,11 @@ class Tournament {
     firstTeam.matchesPlayed++;
     secondTeam.matchesPlayed++;
 
-    if (outcome.equals("win")) {
-      registerWin(firstTeam, secondTeam);
-    } else if (outcome.equals("draw")) {
-      registerDraw(firstTeam, secondTeam);
-    } else {
-      registerWin(secondTeam, firstTeam);
+    switch (outcome){
+      case "win" -> registerWin(firstTeam, secondTeam);
+      case "draw" -> registerDraw(firstTeam, secondTeam);
+      case "loss" -> registerWin(secondTeam, firstTeam);
+      default -> throw new IllegalArgumentException("Unknown outcome: " + outcome);
     }
   }
 }
@@ -86,7 +86,7 @@ class Team implements Comparable<Team> {
 
   @Override
   public String toString() {
-    return "%-30s | %2d | %2d | %2d | %2d | %2d\n"
+    return Tournament.ROW_FORMAT
         .formatted(teamName, matchesPlayed, wins, draws, losses, points);
   }
 }
