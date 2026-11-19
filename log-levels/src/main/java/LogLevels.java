@@ -3,12 +3,15 @@ import java.util.Locale;
 public class LogLevels {
 
   public static String message(String logLine) {
-    return logLine.substring(logLine.indexOf(":") + 1).trim();
+    return logLine.substring(logLine.indexOf(':') + 1).strip();
   }
 
   public static String logLevel(String logLine) {
+    int start = logLine.indexOf('[') + 1;
+    int end = logLine.indexOf(']', start);
+
     return logLine
-        .substring(logLine.indexOf("[") + 1, logLine.indexOf("]"))
+        .substring(start, end)
         .toLowerCase(Locale.ROOT);
   }
 
