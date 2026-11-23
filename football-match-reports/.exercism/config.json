@@ -1,0 +1,26 @@
+{
+  "authors": [
+    "Azumix"
+  ],
+  "contributors": [
+    "AlvesJorge"
+  ],
+  "files": {
+    "solution": [
+      "src/main/java/FootballMatchReports.java"
+    ],
+    "test": [
+      "src/test/java/FootballMatchReportsTest.java"
+    ],
+    "exemplar": [
+      ".meta/src/reference/java/FootballMatchReports.java"
+    ],
+    "invalidator": [
+      "build.gradle"
+    ]
+  },
+  "forked_from": [
+    "csharp/football-match-reports"
+  ],
+  "blurb": "Learn about switches by developing a system to report on soccer matches."
+}
