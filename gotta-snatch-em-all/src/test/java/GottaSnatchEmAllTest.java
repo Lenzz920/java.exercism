@@ -14,7 +14,7 @@ class GottaSnatchEmAllTest {
     @Tag("task:1")
     @DisplayName("newCollection returns an empty set when given an empty list")
     void testNewCollectionEmptyList() {
-        assertThat(GottaSnatchEmAll.newCollection(List.of())).isEmpty();
+        assertThat(RebuildGottaSnatchEmAllAgain.newCollection(List.of())).isEmpty();
     }
 
     @Test
@@ -23,7 +23,7 @@ class GottaSnatchEmAllTest {
     void testNewCollectionSingletonList() {
         List<String> cards = List.of("Bleakachu");
         Set<String> expected = Set.of("Bleakachu");
-        assertThat(GottaSnatchEmAll.newCollection(cards)).isEqualTo(expected);
+        assertThat(RebuildGottaSnatchEmAllAgain.newCollection(cards)).isEqualTo(expected);
     }
 
     @Test
@@ -32,7 +32,7 @@ class GottaSnatchEmAllTest {
     void testNewCollectionListWithDuplicates() {
         List<String> cards = List.of("Bleakachu", "Bleakachu");
         Set<String> expected = Set.of("Bleakachu");
-        assertThat(GottaSnatchEmAll.newCollection(cards)).isEqualTo(expected);
+        assertThat(RebuildGottaSnatchEmAllAgain.newCollection(cards)).isEqualTo(expected);
     }
 
     @Test
@@ -41,7 +41,7 @@ class GottaSnatchEmAllTest {
     void testNewCollectionListWithoutDuplicates() {
         List<String> cards = List.of("Bleakachu", "Newthree");
         Set<String> expected = Set.of("Bleakachu", "Newthree");
-        assertThat(GottaSnatchEmAll.newCollection(cards)).isEqualTo(expected);
+        assertThat(RebuildGottaSnatchEmAllAgain.newCollection(cards)).isEqualTo(expected);
     }
 
     @Test
@@ -49,7 +49,7 @@ class GottaSnatchEmAllTest {
     @DisplayName("addCard returns true when the collection does not yet contain the new card")
     void testAddCardReturnsTrueWhenCardNotInCollection() {
         Set<String> collection = new HashSet<>();
-        assertThat(GottaSnatchEmAll.addCard("Veevee", collection)).isTrue();
+        assertThat(RebuildGottaSnatchEmAllAgain.addCard("Veevee", collection)).isTrue();
     }
 
     @Test
@@ -57,7 +57,7 @@ class GottaSnatchEmAllTest {
     @DisplayName("addCard returns false when the collection already contains the new card")
     void testAddCardReturnsFalseWhenCardAlreadyInCollection() {
         Set<String> collection = new HashSet<>(Set.of("Veevee"));
-        assertThat(GottaSnatchEmAll.addCard("Veevee", collection)).isFalse();
+        assertThat(RebuildGottaSnatchEmAllAgain.addCard("Veevee", collection)).isFalse();
     }
 
     @Test
@@ -66,7 +66,7 @@ class GottaSnatchEmAllTest {
     void testAddCardShouldAddNewCardToCollection() {
         Set<String> collection = new HashSet<>();
         Set<String> expected = Set.of("Veevee");
-        GottaSnatchEmAll.addCard("Veevee", collection);
+        RebuildGottaSnatchEmAllAgain.addCard("Veevee", collection);
         assertThat(collection).isEqualTo(expected);
     }
 
@@ -76,7 +76,7 @@ class GottaSnatchEmAllTest {
     void testAddCardShouldNotAddExistingCardToCollection() {
         Set<String> collection = new HashSet<>(Set.of("Veevee"));
         Set<String> expected = Set.of("Veevee");
-        GottaSnatchEmAll.addCard("Veevee", collection);
+        RebuildGottaSnatchEmAllAgain.addCard("Veevee", collection);
         assertThat(collection).isEqualTo(expected);
     }
 
@@ -86,7 +86,7 @@ class GottaSnatchEmAllTest {
     void testCanTradeBothCollectionsEmpty() {
         Set<String> myCollection = new HashSet<>();
         Set<String> theirCollection = new HashSet<>();
-        assertThat(GottaSnatchEmAll.canTrade(myCollection, theirCollection)).isFalse();
+        assertThat(RebuildGottaSnatchEmAllAgain.canTrade(myCollection, theirCollection)).isFalse();
     }
 
     @Test
@@ -95,7 +95,7 @@ class GottaSnatchEmAllTest {
     void testCanTradeMyCollectionsEmpty() {
         Set<String> myCollection = new HashSet<>();
         Set<String> theirCollection = new HashSet<>(Set.of("Bleakachu"));
-        assertThat(GottaSnatchEmAll.canTrade(myCollection, theirCollection)).isFalse();
+        assertThat(RebuildGottaSnatchEmAllAgain.canTrade(myCollection, theirCollection)).isFalse();
     }
 
     @Test
@@ -104,7 +104,7 @@ class GottaSnatchEmAllTest {
     void testCanTradeTheirCollectionsEmpty() {
         Set<String> myCollection = new HashSet<>(Set.of("Bleakachu"));
         Set<String> theirCollection = new HashSet<>();
-        assertThat(GottaSnatchEmAll.canTrade(myCollection, theirCollection)).isFalse();
+        assertThat(RebuildGottaSnatchEmAllAgain.canTrade(myCollection, theirCollection)).isFalse();
     }
 
     @Test
@@ -113,7 +113,7 @@ class GottaSnatchEmAllTest {
     void testCanTradeBothCollectionsHaveSameCards() {
         Set<String> myCollection = new HashSet<>(Set.of("Gyros", "Garilord"));
         Set<String> theirCollection = new HashSet<>(Set.of("Garilord", "Gyros"));
-        assertThat(GottaSnatchEmAll.canTrade(myCollection, theirCollection)).isFalse();
+        assertThat(RebuildGottaSnatchEmAllAgain.canTrade(myCollection, theirCollection)).isFalse();
     }
 
     @Test
@@ -122,7 +122,7 @@ class GottaSnatchEmAllTest {
     void testCanTradeBothCollectionsHaveUniqueCards() {
         Set<String> myCollection = new HashSet<>(Set.of("Gyros"));
         Set<String> theirCollection = new HashSet<>(Set.of("Garilord"));
-        assertThat(GottaSnatchEmAll.canTrade(myCollection, theirCollection)).isTrue();
+        assertThat(RebuildGottaSnatchEmAllAgain.canTrade(myCollection, theirCollection)).isTrue();
     }
 
     @Test
@@ -131,7 +131,7 @@ class GottaSnatchEmAllTest {
     void testCanTradeBothCollectionsMixedCards() {
         Set<String> myCollection = new HashSet<>(Set.of("Gyros", "Garilord", "Bleakachu"));
         Set<String> theirCollection = new HashSet<>(Set.of("Garilord", "Veevee", "Gyros"));
-        assertThat(GottaSnatchEmAll.canTrade(myCollection, theirCollection)).isTrue();
+        assertThat(RebuildGottaSnatchEmAllAgain.canTrade(myCollection, theirCollection)).isTrue();
     }
 
     @Test
@@ -140,7 +140,7 @@ class GottaSnatchEmAllTest {
     void testCanTradeMyCollectionSubsetOfTheirCollection() {
         Set<String> myCollection = new HashSet<>(Set.of("Gyros", "Garilord"));
         Set<String> theirCollection = new HashSet<>(Set.of("Garilord", "Veevee", "Gyros"));
-        assertThat(GottaSnatchEmAll.canTrade(myCollection, theirCollection)).isFalse();
+        assertThat(RebuildGottaSnatchEmAllAgain.canTrade(myCollection, theirCollection)).isFalse();
     }
 
     @Test
@@ -149,7 +149,7 @@ class GottaSnatchEmAllTest {
     void testCanTradeTheirCollectionSubsetOfMyCollection() {
         Set<String> myCollection = new HashSet<>(Set.of("Garilord", "Veevee", "Gyros"));
         Set<String> theirCollection = new HashSet<>(Set.of("Gyros", "Garilord"));
-        assertThat(GottaSnatchEmAll.canTrade(myCollection, theirCollection)).isFalse();
+        assertThat(RebuildGottaSnatchEmAllAgain.canTrade(myCollection, theirCollection)).isFalse();
     }
 
     @Test
@@ -162,7 +162,7 @@ class GottaSnatchEmAllTest {
                 Set.of("Wigglycream")
         );
         Set<String> expected = Set.of();
-        assertThat(GottaSnatchEmAll.commonCards(collections)).isEqualTo(expected);
+        assertThat(RebuildGottaSnatchEmAllAgain.commonCards(collections)).isEqualTo(expected);
     }
 
     @Test
@@ -173,7 +173,7 @@ class GottaSnatchEmAllTest {
                 Set.of("Veevee", "Wigglycream", "Mayofried")
         );
         Set<String> expected = Set.of("Veevee", "Wigglycream", "Mayofried");
-        assertThat(GottaSnatchEmAll.commonCards(collections)).isEqualTo(expected);
+        assertThat(RebuildGottaSnatchEmAllAgain.commonCards(collections)).isEqualTo(expected);
     }
 
     @Test
@@ -186,7 +186,7 @@ class GottaSnatchEmAllTest {
                 Set.of("Gyros", "Wigglycream", "Shazam")
         );
         Set<String> expected = Set.of("Wigglycream");
-        assertThat(GottaSnatchEmAll.commonCards(collections)).isEqualTo(expected);
+        assertThat(RebuildGottaSnatchEmAllAgain.commonCards(collections)).isEqualTo(expected);
     }
 
     @Test
@@ -197,7 +197,7 @@ class GottaSnatchEmAllTest {
                 Set.of("Veevee", "Wigglycream", "Mayofried")
         );
         Set<String> expected = Set.of("Veevee", "Wigglycream", "Mayofried");
-        assertThat(GottaSnatchEmAll.allCards(collections)).isEqualTo(expected);
+        assertThat(RebuildGottaSnatchEmAllAgain.allCards(collections)).isEqualTo(expected);
     }
 
     @Test
@@ -210,6 +210,6 @@ class GottaSnatchEmAllTest {
                 Set.of("Cooltentbro", "Mayofried", "Wigglycream")
         );
         Set<String> expected = Set.of("Cooltentbro", "Gyros", "Mayofried", "Shazam", "Veevee", "Wigglycream");
-        assertThat(GottaSnatchEmAll.allCards(collections)).isEqualTo(expected);
+        assertThat(RebuildGottaSnatchEmAllAgain.allCards(collections)).isEqualTo(expected);
     }
 }

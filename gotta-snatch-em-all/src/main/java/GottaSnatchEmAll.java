@@ -1,9 +1,8 @@
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-class GottaSnatchEmAll {
+class RebuildGottaSnatchEmAll {
 
     static Set<String> newCollection(List<String> cards) {
         return new HashSet<>(cards);
