@@ -54,6 +54,14 @@ public class LogsLogsLogsTest {
     }
 
     @Test
+    @Tag("task:1")
+    @DisplayName("Parsing log with invalid input")
+    public void parseLogLevelInvalid() {
+        var logLine = new LogLine("INF]: message");
+        assertThat(logLine.getLogLevel()).isEqualTo(LogLevel.UNKNOWN);
+    }
+
+    @Test
     @Tag("task:2")
     @DisplayName("Parsing unknown log level XYZ")
     public void parseLogLevelXyz() {
