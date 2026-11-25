@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.within;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class CarsAssembleTest {
@@ -99,5 +100,12 @@ public class CarsAssembleTest {
     @DisplayName("The workingItemsPerMinute should be 28 when line's speed is 10")
     public void workingItemsPerMinuteForSpeedTen() {
         assertThat(carsAssemble.workingItemsPerMinute(10)).isEqualTo(28);
+    }
+
+    @Test
+    @Tag("task:2")
+    @DisplayName("Verify that correct error throws when speed is 11")
+    public void workingItemsPerMinuteForSpeedEleven() {
+        assertThrows(IllegalArgumentException.class, () -> carsAssemble.workingItemsPerMinute(11));
     }
 }
