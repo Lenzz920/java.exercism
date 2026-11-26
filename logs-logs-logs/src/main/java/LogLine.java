@@ -1,13 +1,19 @@
+import java.nio.charset.StandardCharsets;
+
 public class LogLine {
 
   private final String logLine;
+  private final String level;
+  private final String message;
 
   public LogLine(String logLine) {
     this.logLine = logLine;
+    this.level = getLevel(logLine);
+    this.message = getMessage(logLine);
   }
 
   public LogLevel getLogLevel() {
-    return switch (LogLine.getLevel(logLine)) {
+    return switch (level) {
       case "TRC" -> LogLevel.TRACE;
       case "DBG" -> LogLevel.DEBUG;
       case "INF" -> LogLevel.INFO;
@@ -19,7 +25,7 @@ public class LogLine {
   }
 
   public String getOutputForShortLog() {
-    return getLogLevel().getShortMessage() + ":" + getMessage(logLine);
+    return getLogLevel().getEncodedLevel() + ":" + message;
   }
 
   private static String getLevel(String logLine) {
@@ -32,7 +38,6 @@ public class LogLine {
   }
 
   private static String getMessage(String logLine) {
-    char colon = ':';
-    return logLine.substring(logLine.indexOf(colon) + 1).strip();
+    return logLine.substring(logLine.indexOf(':') + 1).strip();
   }
 }
